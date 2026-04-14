@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kevin Isaac</title>
+    <meta
+      name="description"
+      content="Página oficial de Kevin Isaac, artista y productor de música cristiana contemporánea."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <script>
+  document.addEventListener("mousemove", (e) => {
+    const x = (window.innerWidth / 2 - e.clientX) / 25;
+    const y = (window.innerHeight / 2 - e.clientY) / 25;
+
+    document.querySelector(".hero-copy").style.transform =
+      `translate(${x}px, ${y}px)`;
+
+    document.querySelector(".hero-portrait").style.transform =
+     `translate(${x * -1}px, ${y * -1}px)`;
+    });
+  </script>
+  <canvas id="particles"></canvas>
+  <body class="is-loading">
+    <div class="page-intro" aria-hidden="true">
+      <div class="page-intro-glow"></div>
+      <img class="page-intro-logo" src="KevinILogo.png" alt="" />
+    </div>
+    <div class="page-shell">
+      <header class="hero" id="top">
+        <nav class="topbar">
+          <a class="brand" >Kevin Isaac</a>
+          <div class="nav-links">
+            <a href="mailto:Kevin.06051104@gmail.com">Contacto</a>
+          </div>
+        </nav>
+
+        <div class="hero-layout">
+          <section class="hero-copy">
+            <p class="eyebrow">Artista • Productor Musical • Músico</p>
+
+            <h1>Alabanzas Cristianas de Adoración, al único Dios</h1>
+            <p class="hero-text">
+              Kevin Isaac, un adolescente, artista que crea canciones dirigidas a la exaltación al único Dios, creador y merecedor de toda la gloria
+            </p>
+            <div class="social-links" aria-label="Enlaces del artista">
+              <a href="https://www.youtube.com/@Kevin_Isa" target="_blank" rel="noreferrer">YouTube</a>
+              <a href="https://www.instagram.com/kevin_isa.2010/" target="_blank" rel="noreferrer">Instagram</a>
+              <a
+                href="https://open.spotify.com/artist/6U7taWeuSr1JxiaJQ3qvFy?si=yPF9nr5WQiG1G-agTOfpDg"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Spotify
+              </a>
+            </div>
+          </section>
+
+          <aside class="hero-portrait">
+            <div class="portrait-frame">
+              <img src="PFP.jpg" alt="Retrato de Kevin Isaac en el estudio" />
+            </div>
+          </aside>
+        </div>
+      </header>
+
+      <main>
+        <section class="about-section" id="about">
+          <div class="section-heading">
+            <p class="eyebrow">Sobre mí</p>
+            <h2>Sobre mí</h2>
+          </div>
+
+          <div class="about-layout">
+            <div class="about-copy">
+              <p>
+                Soy Kevin Isaac G.C., artista, productor musical y músico. Mi inspiración
+                viene de Dios, y mi deseo es crear música que acompañe, levante y recuerde su verdad.
+                Dios merece toda adoración, y en cada canto que he compuesto, lleva la exaltación a Él
+              </p>
+              <p>
+                Entre el estudio y la composición, busco canciones honestas, con alma
+                y belleza, que conecten con personas en momentos reales, con Dios
+              </p>
+              <p>
+                También llevo acabo colaboraciones con mi familia, que también apoyan con la letra de las canciones.
+              </p>
+              <p>
+                Hay una historia detrás de todas estas canciones, y cómo comencé a crear música. Pero aún no he publicado mi historia... lo sabrán pronto
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer" id="contact">
+        <img class="footer-logo" src="KevinILogo.png" alt="Logo de Kevin Isaac" />
+        <div class="footer-links" aria-label="Redes y plataformas">
+          <a href="https://www.youtube.com/@Kevin_Isa" target="_blank" rel="noreferrer">YouTube</a>
+          <a href="https://www.instagram.com/kevin_isa.2010/" target="_blank" rel="noreferrer">Instagram</a>
+          <a
+            href="https://open.spotify.com/artist/6U7taWeuSr1JxiaJQ3qvFy?si=yPF9nr5WQiG1G-agTOfpDg"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Spotify
+          </a>
+        </div>
+        <p class="footer-text">
+          Artista y productor de música cristiana contemporánea, creando canciones con propósito, fe y verdad.
+        </p>
+      </footer>
+    </div>
+    <script>
+      window.addEventListener("load", () => {
+        window.setTimeout(() => {
+          window.requestAnimationFrame(() => {
+            document.body.classList.remove("is-loading");
+          });
+        }, 2200);
+      });
+    </script>
+    <script>
+const elements = document.querySelectorAll(
+  ".hero-copy, .hero-portrait, .about-section, .footer"
+);
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.2 });
+
+elements.forEach((el) => {
+  el.classList.add("hidden");
+  observer.observe(el);
+});
+</script>
+<script>
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particlesArray = [];
+let mouse = {
+  x: null,
+  y: null
+};
+
+// 🎨 COLOR CONTROL (changes on scroll)
+let scrollFactor = 0;
+
+window.addEventListener("scroll", () => {
+  scrollFactor = window.scrollY / window.innerHeight;
+});
+
+// 🖱️ TRACK MOUSE
+window.addEventListener("mousemove", (e) => {
+  mouse.x = e.x;
+  mouse.y = e.y;
+});
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 2 + 0.5;
+    this.baseX = this.x;
+    this.baseY = this.y;
+    this.density = Math.random() * 40 + 5;
+    this.speedX = Math.random() * 0.3 - 0.15;
+    this.speedY = Math.random() * 0.3 - 0.15;
+  }
+
+  update() {
+    // FLOATING MOTION
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    // SCREEN WRAP
+    if (this.x < 0) this.x = canvas.width;
+    if (this.x > canvas.width) this.x = 0;
+    if (this.y < 0) this.y = canvas.height;
+    if (this.y > canvas.height) this.y = 0;
+
+    // 🖱️ MOUSE REACTION
+    let dx = mouse.x - this.x;
+    let dy = mouse.y - this.y;
+    let distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance < 100) {
+      this.x -= dx / 10;
+      this.y -= dy / 10;
+    }
+  }
+
+  draw() {
+    // 🎨 COLOR BASED ON SCROLL
+    let r = 229 - scrollFactor * 100;
+    let g = 138 + scrollFactor * 50;
+    let b = 73 + scrollFactor * 120;
+
+    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, 0.7)`;
+
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function init() {
+  particlesArray = [];
+  for (let i = 0; i < 90; i++) {
+    particlesArray.push(new Particle());
+  }
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particlesArray.forEach((p) => {
+    p.update();
+    p.draw();
+  });
+
+  requestAnimationFrame(animate);
+}
+
+init();
+animate();
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  init();
+});
+</script>
+<script>
+const blurElements = document.querySelectorAll(
+  ".hero-copy, .hero-portrait, .about-section, .footer, img, h1, h2, p"
+);
+
+const blurObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("in-view");
+      entry.target.classList.remove("blur-out");
+    } else {
+      entry.target.classList.add("blur-out");
+      entry.target.classList.remove("in-view");
+    }
+  });
+}, {
+  threshold: 0.3
+});
+
+blurElements.forEach((el) => {
+  el.classList.add("blur-out");
+  blurObserver.observe(el);
+});
+</script>
+  </body>
+</html>
