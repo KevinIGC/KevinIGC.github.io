@@ -88,7 +88,7 @@
               </p>
               <p>
                 Entre el estudio y la composición, busco canciones honestas, con alma
-                y belleza, que conecten con personas en momentos reales, con Dios
+                y belleza, que conecten a personas en momentos reales, con Dios
               </p>
               <p>
                 También llevo acabo colaboraciones con mi familia, que también apoyan con la letra de las canciones.
@@ -194,16 +194,6 @@ class Particle {
     if (this.x > canvas.width) this.x = 0;
     if (this.y < 0) this.y = canvas.height;
     if (this.y > canvas.height) this.y = 0;
-
-    // 🖱️ MOUSE REACTION
-    let dx = mouse.x - this.x;
-    let dy = mouse.y - this.y;
-    let distance = Math.sqrt(dx * dx + dy * dy);
-
-    if (distance < 100) {
-      this.x -= dx / 10;
-      this.y -= dy / 10;
-    }
   }
 
   draw() {
