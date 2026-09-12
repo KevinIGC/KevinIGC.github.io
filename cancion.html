@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Canción • Kevin Isaac</title>
+
+    <meta
+      name="description"
+      content="Canción de Kevin Isaac."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body class="is-loading">
+
+    <div
+      class="song-background"
+      id="songBackground"
+    ></div>
+
+    <canvas id="particles"></canvas>
+
+    <!-- LOADING -->
+    <div class="page-intro songs-page-intro" aria-hidden="true">
+      <div class="page-intro-glow"></div>
+
+      <img
+        class="page-intro-logo"
+        src="KevinILogo.png"
+        alt=""
+      />
+    </div>
+
+
+    <div class="page-shell">
+
+      <!-- NAVBAR -->
+      <header class="song-detail-header">
+
+        <nav class="topbar">
+
+          <a class="brand" href="index.html">
+            <img
+              class="brand-pfp"
+              src="PFP.jpg"
+              alt="Foto de perfil de Kevin Isaac"
+            />
+
+            <span>Kevin Isaac</span>
+          </a>
+
+          <div class="nav-links">
+
+            <a href="index.html">
+              Inicio
+            </a>
+
+            <a href="mailto:KevinIsaac.music@gmail.com">
+              Contacto
+            </a>
+
+          </div>
+
+        </nav>
+
+      </header>
+
+
+      <!-- SONG -->
+      <main>
+
+        <section class="song-detail">
+
+          <!-- BACK -->
+          <a
+            class="song-back"
+            href="canciones.html"
+          >
+            ← Volver a canciones
+          </a>
+
+
+          <!-- MAIN INFO -->
+          <div class="song-detail-layout">
+
+            <div class="song-detail-cover">
+
+              <img
+                id="songCover"
+                src=""
+                alt=""
+              />
+
+            </div>
+
+
+            <div class="song-detail-info">
+
+              <p
+                class="eyebrow"
+                id="songRelease"
+              ></p>
+
+              <h1 id="songTitle"></h1>
+
+              <div class="song-detail-meta">
+
+                <div>
+                    <span>Duración</span>
+                    <strong id="songDuration"></strong>
+                </div>
+
+                <div>
+                    <span>Música</span>
+                    <strong id="songMusic"></strong>
+                </div>
+
+                <div>
+                    <span>Compositor</span>
+                    <strong id="songComposer"></strong>
+                </div>
+
+                <div>
+                    <span>Colaboradores</span>
+                    <strong id="songCollaborators"></strong>
+                </div>
+
+                </div>
+
+                <div
+                class="song-platforms"
+                id="songPlatforms"
+                ></div>
+
+            </div>
+
+          </div>
+
+
+          <!-- LYRICS -->
+          <section class="lyrics-section">
+
+            <div class="section-heading">
+              <h2>
+                Letra
+              </h2>
+            </div>
+
+            <div
+              class="lyrics"
+              id="songLyrics"
+            ></div>
+
+          </section>
+
+        </section>
+
+      </main>
+
+
+      <!-- FOOTER -->
+      <footer class="footer">
+
+        <img
+          class="footer-logo"
+          src="KevinILogo.png"
+          alt="Logo de Kevin Isaac"
+        />
+
+        <div class="footer-links">
+
+          <a
+            class="service-link youtube"
+            href="https://www.youtube.com/@Kevin_Isa"
+            target="_blank"
+            rel="noreferrer"
+          >
+            YouTube
+          </a>
+
+          <a
+            class="service-link instagram"
+            href="https://www.instagram.com/kevin_isa.2010/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Instagram
+          </a>
+
+          <a
+            class="service-link spotify"
+            href="https://open.spotify.com/artist/6U7taWeuSr1JxiaJQ3qvFy"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Spotify
+          </a>
+
+        </div>
+
+        <p class="footer-text">
+          Artista y productor de música cristiana contemporánea,
+          creando canciones con propósito, fe y verdad.
+        </p>
+
+      </footer>
+
+    </div>
+
+
+    <!-- LOAD SONG DATA -->
+    <script src="songs.js"></script>
+
+
+    <!-- PAGE LOADING -->
+    <script>
+      window.addEventListener("load", () => {
+
+        window.setTimeout(() => {
+
+          document.body.classList.remove("is-loading");
+
+        }, 1000);
+
+      });
+    </script>
+
+
+    <!-- SONG DISPLAY -->
+    <script>
+
+      const params =
+        new URLSearchParams(window.location.search);
+
+      const songSlug =
+        params.get("song");
+
+      const song =
+        songs.find(
+          (item) => item.slug === songSlug
+        );
+
+
+      if (song) {
+
+        document.title =
+          `${song.title} • Kevin Isaac`;
+
+
+        document.getElementById("songCover").src =
+          song.cover;
+
+        document.getElementById("songCover").alt =
+          `Portada de ${song.title}`;
+
+        const songBackground =
+          document.getElementById("songBackground");
+
+        songBackground.style.backgroundImage =
+          `url("${song.cover}")`;
+
+        document.body.classList.add("song-loaded");
+
+        document.getElementById("songTitle").textContent =
+          song.title;
+
+
+        document.getElementById("songRelease").textContent =
+          song.published || "Fecha de publicación no disponible";
+
+
+        document.getElementById("songDuration").textContent =
+          song.duration;
+
+
+        document.getElementById("songMusic").textContent =
+          song.music;
+
+
+        document.getElementById("songComposer").textContent =
+          song.composer;
+
+
+        document.getElementById("songCollaborators").textContent =
+          song.collaborators;
+
+        
+        const platformsContainer =
+            document.getElementById("songPlatforms");
+
+            if (song.links) {
+
+            if (song.links.spotify) {
+
+                const spotifyLink =
+                document.createElement("a");
+
+                spotifyLink.href =
+                song.links.spotify;
+
+                spotifyLink.target =
+                "_blank";
+
+                spotifyLink.rel =
+                "noreferrer";
+
+                spotifyLink.className =
+                "song-platform spotify";
+
+                spotifyLink.textContent =
+                "Spotify";
+
+                platformsContainer.appendChild(
+                spotifyLink
+                );
+
+            }
+
+
+            if (song.links.youtube) {
+
+                const youtubeLink =
+                document.createElement("a");
+
+                youtubeLink.href =
+                song.links.youtube;
+
+                youtubeLink.target =
+                "_blank";
+
+                youtubeLink.rel =
+                "noreferrer";
+
+                youtubeLink.className =
+                "song-platform youtube";
+
+                youtubeLink.textContent =
+                "YouTube";
+
+                platformsContainer.appendChild(
+                youtubeLink
+                );
+
+            }
+
+            }
+
+
+        const lyricsContainer =
+          document.getElementById("songLyrics");
+
+
+        const stanzas = song.lyrics
+            .trim()
+            .split(/\n\s*\n/);
+
+            stanzas.forEach((stanza) => {
+            const stanzaElement = document.createElement("div");
+            stanzaElement.className = "lyric-stanza";
+
+            stanza.split("\n").forEach((line) => {
+                const lineElement = document.createElement("p");
+                lineElement.textContent = line.trim();
+                stanzaElement.appendChild(lineElement);
+            });
+
+            lyricsContainer.appendChild(stanzaElement);
+        });
+
+      } else {
+
+        document.getElementById("songTitle").textContent =
+          "Canción no encontrada";
+
+        document.getElementById("songLyrics").innerHTML =
+          "<p>La canción que buscas no existe.</p>";
+
+      }
+
+    </script>
+
+
+    <!-- ANIMATIONS -->
+    <script>
+
+      const elements =
+        document.querySelectorAll(
+          ".song-detail, .lyrics-section, .footer"
+        );
+
+
+      const observer =
+        new IntersectionObserver(
+          (entries) => {
+
+            entries.forEach((entry) => {
+
+              if (entry.isIntersecting) {
+
+                entry.target.classList.add(
+                  "show"
+                );
+
+              }
+
+            });
+
+          },
+          {
+            threshold: 0.15
+          }
+        );
+
+
+      elements.forEach((el) => {
+
+        el.classList.add("hidden");
+
+        observer.observe(el);
+
+      });
+
+    </script>
+
+
+    <!-- PARTICLES -->
+    <script>
+
+      const canvas =
+        document.getElementById("particles");
+
+      const ctx =
+        canvas.getContext("2d");
+
+
+      canvas.width =
+        window.innerWidth;
+
+      canvas.height =
+        window.innerHeight;
+
+
+      let particlesArray = [];
+
+      let scrollFactor = 0;
+
+
+      window.addEventListener("scroll", () => {
+
+        scrollFactor =
+          window.scrollY /
+          window.innerHeight;
+
+      });
+
+
+      class Particle {
+
+        constructor() {
+
+          this.x =
+            Math.random() *
+            canvas.width;
+
+          this.y =
+            Math.random() *
+            canvas.height;
+
+          this.size =
+            Math.random() * 2 +
+            0.5;
+
+          this.speedX =
+            Math.random() * 0.3 -
+            0.15;
+
+          this.speedY =
+            Math.random() * 0.3 -
+            0.15;
+
+        }
+
+
+        update() {
+
+          this.x += this.speedX;
+          this.y += this.speedY;
+
+
+          if (this.x < 0)
+            this.x = canvas.width;
+
+          if (this.x > canvas.width)
+            this.x = 0;
+
+
+          if (this.y < 0)
+            this.y = canvas.height;
+
+          if (this.y > canvas.height)
+            this.y = 0;
+
+        }
+
+
+        draw() {
+
+          let r =
+            229 -
+            scrollFactor * 100;
+
+          let g =
+            138 +
+            scrollFactor * 50;
+
+          let b =
+            73 +
+            scrollFactor * 120;
+
+
+          ctx.fillStyle =
+            `rgba(${r}, ${g}, ${b}, 0.7)`;
+
+
+          ctx.beginPath();
+
+
+          ctx.arc(
+            this.x,
+            this.y,
+            this.size,
+            0,
+            Math.PI * 2
+          );
+
+
+          ctx.fill();
+
+        }
+
+      }
+
+
+      function init() {
+
+        particlesArray = [];
+
+
+        for (
+          let i = 0;
+          i < 90;
+          i++
+        ) {
+
+          particlesArray.push(
+            new Particle()
+          );
+
+        }
+
+      }
+
+
+      function animate() {
+
+        ctx.clearRect(
+          0,
+          0,
+          canvas.width,
+          canvas.height
+        );
+
+
+        particlesArray.forEach(
+          (particle) => {
+
+            particle.update();
+            particle.draw();
+
+          }
+        );
+
+
+        requestAnimationFrame(
+          animate
+        );
+
+      }
+
+
+      init();
+      animate();
+
+
+      window.addEventListener(
+        "resize",
+        () => {
+
+          canvas.width =
+            window.innerWidth;
+
+          canvas.height =
+            window.innerHeight;
+
+          init();
+
+        }
+      );
+
+    </script>
+
+  </body>
+</html>

@@ -798,3 +798,704 @@ body.is-loading .footer {
   height: 100%;
   z-index: -1;
 }
+
+
+
+/* ================================
+   SONGS PAGE
+================================ */
+
+.songs-header {
+  padding-bottom: 70px;
+}
+
+.songs-heading {
+  max-width: 760px;
+  padding: 70px 0 20px;
+}
+
+.songs-heading h1 {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.95;
+}
+
+.songs-heading p:last-child {
+  max-width: 58ch;
+  margin-top: 24px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.songs-section {
+  margin-bottom: 90px;
+}
+
+.songs-list {
+  display: grid;
+  gap: 28px;
+}
+
+.song-card {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 30px;
+  align-items: center;
+
+  padding: 22px;
+
+  border: 1px solid rgba(173, 207, 212, 0.12);
+  border-radius: 28px;
+
+  background: rgba(15, 23, 34, 0.18);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow: var(--shadow);
+
+  transition:
+    transform 300ms ease,
+    border-color 300ms ease,
+    background-color 300ms ease;
+}
+
+.song-card:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(173, 207, 212, 0.25);
+
+  background: rgba(20, 31, 45, 0.25);
+}
+
+.song-cover {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.song-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 600ms ease;
+}
+
+.song-card:hover .song-cover img {
+  transform: scale(1.04);
+}
+
+.song-info {
+  padding: 10px 12px 10px 0;
+}
+
+.song-info h2 {
+  margin: 0;
+
+  font-family: "Iowan Old Style", "Palatino Linotype", serif;
+
+  font-size: clamp(2rem, 4vw, 3.2rem);
+
+  line-height: 1;
+}
+
+.song-info > p:not(.release-kicker) {
+  max-width: 58ch;
+
+  margin: 18px 0 0;
+
+  color: var(--muted);
+
+  line-height: 1.7;
+}
+
+.song-actions {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-top: 24px;
+}
+
+.songs-button {
+  color: var(--text);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(121, 184, 191, 0.22),
+      rgba(229, 138, 73, 0.22)
+    );
+
+  border-color: rgba(173, 207, 212, 0.28);
+}
+
+.songs-button:hover {
+  border-color: rgba(242, 185, 137, 0.45);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 720px) {
+
+  .songs-heading {
+    padding-top: 45px;
+  }
+
+  .songs-heading h1 {
+    font-size: clamp(3rem, 16vw, 4.5rem);
+  }
+
+  .song-card {
+    grid-template-columns: 1fr;
+
+    padding: 16px;
+
+    gap: 20px;
+
+    border-radius: 22px;
+  }
+
+  .song-cover {
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .song-info {
+    padding: 0 4px 8px;
+  }
+
+  .song-info h2 {
+    font-size: 2rem;
+  }
+
+}
+
+/* =========================================
+   CANCIONES - SUBTLE LOADING
+========================================= */
+
+.songs-page-intro {
+  background: rgba(9, 13, 20, 0.96);
+}
+
+.songs-page-intro .page-intro-logo {
+  width: min(110px, 22vw);
+  opacity: 0;
+  animation: songsLogoLoading 1.4s ease-in-out forwards;
+}
+
+.songs-page-intro .page-intro-glow {
+  opacity: 0.35;
+  animation: songsGlowLoading 1.2s ease-in-out forwards;
+}
+
+@keyframes songsLogoLoading {
+  0% {
+    opacity: 0;
+    transform: scale(0.88);
+    filter: blur(5px);
+  }
+
+  30% {
+    opacity: 0.75;
+    transform: scale(1);
+    filter: blur(0);
+  }
+
+  65% {
+    opacity: 0.45;
+    transform: scale(1.02);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.04);
+    filter: blur(2px);
+  }
+}
+
+@keyframes songsGlowLoading {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  35% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}
+
+/* =========================================
+   SONG DETAIL PAGE
+========================================= */
+
+.song-detail-header {
+  padding-bottom: 20px;
+}
+
+.song-detail {
+  padding: 30px 0 100px;
+}
+
+.song-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 45px;
+
+  color: var(--muted);
+  text-decoration: none;
+
+  font-size: 0.9rem;
+
+  transition:
+    color 250ms ease,
+    transform 250ms ease;
+}
+
+.song-back:hover {
+  color: var(--text);
+  transform: translateX(-4px);
+}
+
+
+/* MAIN SONG INFORMATION */
+
+.song-detail-layout {
+  display: grid;
+  grid-template-columns:
+    minmax(280px, 480px)
+    minmax(0, 1fr);
+
+  gap: 70px;
+
+  align-items: center;
+}
+
+
+.song-detail-cover {
+  width: 100%;
+
+  overflow: hidden;
+
+  border-radius: 30px;
+
+  border:
+    1px solid
+    rgba(173, 207, 212, 0.16);
+
+  background:
+    rgba(15, 23, 34, 0.2);
+
+  box-shadow:
+    0 25px 70px
+    rgba(0, 0, 0, 0.25);
+}
+
+
+.song-detail-cover img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+}
+
+
+.song-detail-info {
+  max-width: 650px;
+}
+
+#songTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.song-detail-info h1 {
+  margin: 10px 0 35px;
+
+  font-family:
+    "Iowan Old Style",
+    "Palatino Linotype",
+    serif;
+
+  font-size:
+    clamp(3rem, 7vw, 6.5rem);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.04em;
+}
+
+.song-background {
+  position: fixed;
+  inset: 0;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0;
+  filter: blur(35px);
+  transform: scale(1.12);
+
+  z-index: -2;
+
+  transition:
+    opacity 1s ease,
+    background-image 0.8s ease;
+}
+
+/* Dark overlay so the website stays readable */
+.song-background::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8, 8, 10, 0.72),
+      rgba(8, 8, 10, 0.88)
+    );
+}
+
+/* Show it once the song has loaded */
+body.song-loaded .song-background {
+  opacity: 0.65;
+}
+
+/* METADATA */
+
+.song-detail-meta {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+
+.song-detail-meta div {
+  padding: 18px;
+
+  border:
+    1px solid
+    rgba(173, 207, 212, 0.12);
+
+  border-radius: 18px;
+
+  background:
+    rgba(15, 23, 34, 0.18);
+
+  backdrop-filter: blur(12px);
+}
+
+
+.song-detail-meta span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: var(--muted);
+
+  font-size: 0.75rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+}
+
+
+.song-detail-meta strong {
+  display: block;
+
+  color: var(--text);
+
+  font-size: 0.95rem;
+
+  line-height: 1.45;
+}
+
+/* =========================
+   SONG CARDS
+   ========================= */
+
+.song-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 28px;
+
+  color: inherit;
+  text-decoration: none;
+
+  padding: 22px;
+  border-radius: 24px;
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    border-color 0.35s ease;
+}
+
+/* Prevent the global link styles from affecting song content */
+.song-card,
+.song-card:visited,
+.song-card:hover,
+.song-card:active {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Cover */
+
+.song-cover img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+
+  border-radius: 18px;
+}
+
+/* Song information */
+
+.song-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.song-info .release-kicker {
+  margin: 0 0 8px;
+
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  opacity: 0.55;
+}
+
+.song-info h2 {
+  margin: 0 0 12px;
+
+  color: inherit;
+  text-decoration: none;
+
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.song-info > p:not(.release-kicker) {
+  margin: 0;
+
+  max-width: 650px;
+
+  color: inherit;
+  text-decoration: none;
+
+  line-height: 1.7;
+  opacity: 0.7;
+}
+
+.song-platforms {
+  display: flex;
+  gap: 10px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.song-platform {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 17px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+
+  color: inherit;
+  text-decoration: none;
+
+  font-size: 0.85rem;
+  font-weight: 500;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.song-platform:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+}
+
+.song-platform.spotify:hover {
+  border-color: rgba(30, 215, 96, 0.4);
+}
+
+.song-platform.youtube:hover {
+  border-color: rgba(255, 70, 70, 0.4);
+}
+
+/* Button */
+
+.song-actions {
+  margin-top: 22px;
+}
+
+.songs-button {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 9px 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+
+  color: inherit;
+  text-decoration: none;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* Card hover */
+
+.song-card:hover {
+  transform: translateY(-4px);
+}
+
+.song-card:hover .songs-button {
+  transform: translateX(3px);
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+
+/* LYRICS */
+
+.lyrics {
+  padding: 45px;
+  border: 1px solid rgba(173, 207, 212, 0.12);
+  border-radius: 28px;
+  background: rgba(15, 23, 34, 0.18);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+}
+
+.lyric-stanza {
+  margin-bottom: 42px;
+}
+
+.lyric-stanza:last-child {
+  margin-bottom: 0;
+}
+
+.lyric-stanza p {
+  margin: 0;
+  color: var(--text);
+  font-family: "Iowan Old Style", "Palatino Linotype", serif;
+  font-size: 1.15rem;
+  line-height: 1.75;
+}
+
+@media (max-width: 720px) {
+  .lyrics {
+    padding: 28px 22px;
+  }
+
+  .lyric-stanza {
+    margin-bottom: 34px;
+  }
+
+  .lyric-stanza p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 720px) {
+
+  .song-detail {
+    padding-top: 20px;
+  }
+
+
+  .song-detail-layout {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+  }
+
+
+  .song-detail-cover {
+    max-width: 430px;
+
+    margin: 0 auto;
+  }
+
+
+  .song-detail-info h1 {
+    margin-bottom: 30px;
+
+    font-size:
+      clamp(3rem, 15vw, 5rem);
+  }
+
+
+  .song-detail-meta {
+    grid-template-columns: 1fr;
+  }
+
+
+  .lyrics-section {
+    margin-top: 80px;
+  }
+
+
+  .lyrics {
+    padding: 28px 22px;
+  }
+
+
+  .lyrics p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+}
