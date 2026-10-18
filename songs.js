@@ -1,4 +1,56 @@
 const songs = [
+    {
+    slug: "quien-me-sostiene",
+    title: "Quien Me Sostiene",
+    cover: "SongCovers/QMS.png",
+    duration: "2:22",
+    music: "Kevin Isaac",
+    composer: "Kevin Isaac",
+    collaborators: "Ninguno",
+    published: "Octubre 3, 2026",
+    links: {
+    spotify: "https://open.spotify.com/album/5HkorzdgIMmSbvDc4L5DnJ?si=2ujB-4fIQB6Anu-GSxDnQQ",
+    youtube: "https://www.youtube.com/watch?v=45vGVEFXEGI"
+    },
+    lyrics: `Qué manera de comprender
+    que Tú siempre estás ahí.
+    Si no hay algo difícil,
+    ¿cómo podré saber
+    que sí estás Tú ahí?
+
+  Aunque caminos vengan,
+  caminos que no esperaba,
+  sé que Tú estarás ahí,
+  guiando todo mi vivir.
+  Cada paso que tome,
+  Tu mano sentiré.
+  Con tanta delicadeza,
+  Tú eres quien me sostiene.
+
+  No comprendo Tu gran amor,
+  no hay nadie como Tú.
+  Bendito seas Tú,
+  alabado seas para siempre.
+
+  Qué manera de comprender
+  que tienes misericordia de mí,
+  cada vez que yo te fallo,
+  Tu amor no se aparta de mí.
+
+  Aunque sea imperfecto
+  Tu perfección me sostiene,
+  Tú sigues estando ahí,
+  a pesar de que te falle.
+  Cada paso que tome,
+  Tu mano sentiré.
+  Con tanta delicadeza,
+  Tú eres quien me sostiene.
+
+  No comprendo Tu gran amor,
+  no hay nadie como Tú.
+  Bendito seas Tú,
+  alabado seas para siempre.`
+  },
   {
     slug: "a-tu-lado",
     title: "A Tu Lado",
